@@ -91,26 +91,3 @@ CareerForge-AI/
 ├── app.py
 ├── .gitignore
 └── README.md
-
-                ┌─────────────────┐
-                │      User       │
-                └────────┬────────┘
-                         │
-                         ▼
-                ┌─────────────────┐
-                │ CareerForge AI  │
-                │    Dashboard    │
-                └────────┬────────┘
-                         │
-          ┌──────────────┼──────────────┐
-          ▼              ▼              ▼
-     ATS Analysis   Career Path    Interview Prep
-          │              │              │
-          └──────────────┼──────────────┘
-                         ▼
-                  ┌─────────────┐
-                  │   Groq AI   │
-                  └──────┬──────┘
-                         │
-                         ▼
-                Personalized Results

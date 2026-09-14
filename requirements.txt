@@ -1,0 +1,7 @@
+flask
+flask-login
+python-dotenv
+groq
+pypdf
+scikit-learn
+gunicorn
