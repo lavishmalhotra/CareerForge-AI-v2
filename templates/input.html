@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - CareerForge AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <span class="wordmark">CareerForge AI</span>
+        <nav class="nav-links">
+            <a href="/history">History</a>
+        </nav>
+    </header>
+
+    <main class="form-page">
+        <h1 class="form-title">Tell us about yourself</h1>
+        <p class="form-sub">Fill the form manually, or upload your resume instead.</p>
+
+        <form class="career-form" action="/submit" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="e.g. Lavish Malhotra">
+            </div>
+
+            <div class="form-group">
+                <label for="education">Education</label>
+                <input type="text" id="education" name="education" placeholder="e.g. B.Tech CSE, 3rd Year">
+            </div>
+
+            <div class="form-group">
+                <label for="skills">Skills</label>
+                <input type="text" id="skills" name="skills" placeholder="e.g. Python, SQL, OpenCV">
+            </div>
+
+            <div class="form-group">
+                <label for="interests">Interests</label>
+                <input type="text" id="interests" name="interests" placeholder="e.g. AI, Web Development">
+            </div>
+
+            <div class="form-divider">— or —</div>
+
+            <div class="form-group">
+                <label for="resume">Upload Resume (PDF)</label>
+                <input type="file" id="resume" name="resume" accept=".pdf">
+            </div>
+
+            <button type="submit" class="cta-button">Get My Career Path</button>
+        </form>
+    </main>
+</body>
+</html>

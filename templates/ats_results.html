@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your ATS Score - CareerForge AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <a href="/" class="wordmark">CareerForge AI</a>
+        <nav class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/history">History</a>
+        </nav>
+    </header>
+
+    <main class="results-page">
+        <h1 class="results-title">Your ATS Score</h1>
+
+        <div class="score-hero">
+            <div class="score-circle">{{ data.overall_score }}/100</div>
+        </div>
+
+        <div class="score-breakdown">
+            <div class="score-item">
+                <div class="value">{{ data.keyword_score }}%</div>
+                <div class="label">Keyword Match</div>
+            </div>
+            <div class="score-item">
+                <div class="value">{{ data.section_score }}%</div>
+                <div class="label">Section Coverage</div>
+            </div>
+            <div class="score-item">
+                <div class="value">{{ data.contact_score }}%</div>
+                <div class="label">Contact Info</div>
+            </div>
+        </div>
+
+        {% if data.matched_keywords %}
+        <h2 style="font-family: 'Fraunces', serif; font-size: 1.2rem; margin-bottom: 16px;">Matched keywords</h2>
+        <p style="color: var(--text-muted); margin-bottom: 32px; line-height: 1.6;">{{ data.matched_keywords | join(', ') }}</p>
+        {% endif %}
+
+        {% if data.tips %}
+        <h2 style="font-family: 'Fraunces', serif; font-size: 1.2rem; margin-bottom: 16px;">Tips to improve</h2>
+        <ul class="tips-list">
+            {% for tip in data.tips %}
+            <li>{{ tip }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <a href="/ats-score" class="cta-button secondary" style="margin-top: 24px; display: inline-block;">Try Again</a>
+    </main>
+</body>
+</html>

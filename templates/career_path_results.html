@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Career Paths - CareerForge AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <a href="/" class="wordmark">CareerForge AI</a>
+        <nav class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/history">History</a>
+        </nav>
+    </header>
+
+    <main class="results-page">
+        {% if data.valid %}
+            <h1 class="results-title">Your Career Paths</h1>
+            <div class="career-cards">
+                {% for career in data.careers %}
+                <div class="career-card">
+                    <div class="career-card-top">
+                        <h2>{{ career.title }}</h2>
+                        <span class="match-badge">{{ career.match }}% AI match</span>
+                    </div>
+                    <p>{{ career.reason }}</p>
+                    {% if career.ml_score is defined %}
+                    <div class="ml-section">
+                        <div class="ml-score-row">
+                            <span class="ml-label">ML skill-match score (TF-IDF)</span>
+                            <span class="ml-score">{{ career.ml_score }}%</span>
+                        </div>
+                        {% if career.missing_skills %}
+                        <p class="ml-missing"><strong>Skills to build:</strong> {{ career.missing_skills | join(', ') }}</p>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <a href="/career-path" class="cta-button secondary" style="margin-top: 32px; display: inline-block;">Try Again</a>
+        {% else %}
+            <p class="error-message">{{ data.message }}</p>
+            <a href="/career-path" class="cta-button">Try Again</a>
+        {% endif %}
+    </main>
+</body>
+</html>

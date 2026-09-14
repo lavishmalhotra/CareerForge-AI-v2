@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Questions - CareerForge AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <a href="/" class="wordmark">CareerForge AI</a>
+        <nav class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/history">History</a>
+        </nav>
+    </header>
+
+    <main class="results-page">
+        <h1 class="results-title">Interview Questions: {{ data.role }}</h1>
+
+        {% for qa in data.questions %}
+        <div class="qa-card">
+            <p class="qa-question">Q{{ loop.index }}. {{ qa.question }}</p>
+            <p class="qa-answer">{{ qa.answer }}</p>
+        </div>
+        {% endfor %}
+
+        <a href="/interview-prep" class="cta-button secondary" style="margin-top: 16px; display: inline-block;">Try Another Role</a>
+    </main>
+</body>
+</html>

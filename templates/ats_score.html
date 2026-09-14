@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Resume Score - CareerForge AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <a href="/" class="wordmark">CareerForge AI</a>
+        <nav class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/history">History</a>
+        </nav>
+    </header>
+
+    <main class="tool-page">
+        <div class="tool-header" style="--tool-color: #D9A441; --tool-bg: rgba(217, 164, 65, 0.14);">
+            <div class="tool-header-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M9 3h6l1 3h3v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6h3l1-3z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+            </div>
+            <h1 class="tool-title">ATS Resume Score Checker</h1>
+        </div>
+        <p class="tool-sub">Upload your resume and tell us the role you're targeting.</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="/ats-score" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="resume">Upload Resume (PDF)</label>
+                <input type="file" id="resume" name="resume" accept=".pdf" required>
+            </div>
+                        <div class="form-group">
+                <label for="job_description">Job Description (paste the full posting)</label>
+                <textarea id="job_description" name="job_description" placeholder="Paste the job description here for an accurate keyword match score..." style="min-height:160px;"></textarea>
+            </div>
+            <button type="submit" class="cta-button">Check My Score</button>
+        </form>
+    </main>
+</body>
+</html>

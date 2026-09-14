@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter Generator - CareerForge AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <a href="/" class="wordmark">CareerForge AI</a>
+        <nav class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/history">History</a>
+        </nav>
+    </header>
+
+    <main class="tool-page">
+        <div class="tool-header" style="--tool-color: #D9724A; --tool-bg: rgba(217, 114, 74, 0.14);">
+            <div class="tool-header-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M4 4h16v16H4z"/>
+                    <path d="M4 6l8 7 8-7"/>
+                </svg>
+            </div>
+            <h1 class="tool-title">Cover Letter Generator</h1>
+        </div>
+        <p class="tool-sub">Give us a few details and we'll draft one for you.</p>
+
+        <form action="/cover-letter" method="POST">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Role Applying For</label>
+                <input type="text" id="role" name="role" required>
+            </div>
+            <div class="form-group">
+                <label for="company">Company Name</label>
+                <input type="text" id="company" name="company" required>
+            </div>
+            <div class="form-group">
+                <label for="highlights">Key Highlights (skills, projects, achievements)</label>
+                <textarea id="highlights" name="highlights" placeholder="e.g. Built an AI career platform, strong in Python and ML"></textarea>
+            </div>
+            <button type="submit" class="cta-button">Generate Cover Letter</button>
+        </form>
+    </main>
+</body>
+</html>

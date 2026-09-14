@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - CareerForge AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <a href="/" class="wordmark">CareerForge AI</a>
+    </header>
+
+    <main class="auth-page">
+        <div class="auth-panel">
+            <h2 class="auth-panel-title">Four AI tools. One dashboard.</h2>
+            <p class="auth-panel-sub">Career paths, ATS scoring, interview prep, and cover letters — built for your placement season.</p>
+        </div>
+        <div class="auth-form-side">
+            <h1 class="auth-title">Create your account</h1>
+            <p class="auth-sub">Free, takes less than a minute.</p>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="flash-message">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="cta-button">Sign Up</button>
+            </form>
+
+            <p class="auth-switch">Already have an account? <a href="/login">Log in</a></p>
+        </div>
+    </main>
+</body>
+</html>
